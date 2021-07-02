@@ -14,8 +14,7 @@ export class ActualizarUsuarioComponent implements OnInit {
   formulario: FormGroup;
   id: any;
 
-  constructor( private service: UsuariosService, private fb: FormBuilder, private router: Router, 
-    private rutaActiva: ActivatedRoute ) {
+  constructor( private service: UsuariosService, private fb: FormBuilder, private router: Router, private rutaActiva: ActivatedRoute ) {
 
     const _id = this.rutaActiva.snapshot.paramMap.get('id');
     this.id = _id;
@@ -49,18 +48,17 @@ export class ActualizarUsuarioComponent implements OnInit {
   }
 
   guardar() {
-    if( this.formulario.status == 'VALID' ){
+    if ( this.formulario.status === 'VALID' ){
       const info = this.formulario.value;
-      
-      const usuario : CrearUsuarioModel = {
+
+      const usuario: CrearUsuarioModel = {
         nombre: info.nombre,
         correo: info.correo,
         password: info.password,
         rol: info.rol,
         no_control: '18330396'
       };
-      
-      
+
       this.service.putUsuario( this.id, usuario ).subscribe( res => {
         this.router.navigate(['tablaUsuarios']);
       });
