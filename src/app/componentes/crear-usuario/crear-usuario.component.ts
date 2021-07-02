@@ -33,7 +33,7 @@ export class CrearUsuarioComponent implements OnInit {
         correo: info.correo,
         password: info.password,
         rol: info.rol,
-        no_control: '18330509'
+        no_control: '18330396'
       };
 
       this.service.postUsuario( usuario ).subscribe( res => {
